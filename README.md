@@ -4,7 +4,7 @@ Test page live in https://meals-on-wheels-test.herokuapp.com/ (deployed automati
 ### First time
 * "npm install" on parent folder, client and server
 * "npm install -g gulp @angular/cli@latest"
-* "gulp build" on parent folder ("npm install -g gulp" if you don't have it)
+* "gulp build" on parent folder
 
 ### After first time
 * "gulp" on parent folder, it will start the server, the watchers and open the browser for you
