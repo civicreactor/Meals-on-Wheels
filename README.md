@@ -1,5 +1,5 @@
 # Meals-on-Wheels
-
+Test page live in https://meals-on-wheels-test.herokuapp.com/ (deployed automatically on "master" branch changes)
 ## Running the app
 ### First time
 * "npm install" on parent folder, client and server
