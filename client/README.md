@@ -1,28 +1,44 @@
 # MealsOnWheels
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+## Running the app
+* since the server needs to be running in order for this to work, follow the instructions in the parent folder
 
-## Development server
+## Workflow
+* to keep the coding standards, run "ng lint" before committing your changes and fix the issues
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Read
+* Bootstrap 4. [The grid](https://v4-alpha.getbootstrap.com/layout/grid/) is the most important part
+* Angular2
+* angular-cli (specially creating components and services with it)
 
-## Code scaffolding
+## Modules
+* The app has different modules. Parent module is "app", childs are "admin" and "client"
+* If developing something only the "admin" module will use, do all the imports/declarations in "admin.module.ts".
+* Routes for a child module go in its specific module, not in the "app.module"
+* There is a "shared" module for things all the other modules will use
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+## Coding
+* Follow the coding style. You can read more about it [here](https://github.com/Microsoft/TypeScript/wiki/Coding-guidelines) and [here](https://angular.io/styleguide). It's the same one angular-cli and VSCode follow by default
+* If you are thinking about using jQuery or similar libraries, Angular2 probably has a way to do it
 
-## Build
+## Views
+* We are using Bootstrap 4, ng-bootstrap and other dependecies that help with the styling. If you want to add something new to the view, look for the functionality inside those libraries first
+* ng-bootstrap mixes Bootstrap with Angular2, reducing the code you would need to write.
+* Use the spinners while waiting for a response (HTTP requests), so that the users know something is going on
+* Show errors on the view when possible/informative
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+# Dependencies
+* [Bootstrap 4](https://v4-alpha.getbootstrap.com/getting-started/introduction/)
+* [ng-bootstrap](https://ng-bootstrap.github.io/#/getting-started)
+* [ng2-spin-kit](https://www.npmjs.com/package/ng2-spin-kit) [old examples](http://jsfiddle.net/Urigo/638AA/18/)
 
-## Running unit tests
+# Spinners
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The basic spinners are:
 
-## Running end-to-end tests
+* circle-spinner
+* three-bounce-spinner
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+# Tips:
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* Add new components/services using the angular-cli, it will do the declarations in the closest module automatically
