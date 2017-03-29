@@ -17,3 +17,5 @@ Running "gulp" will do the following:
 * set a watcher on "./client/src", which will automatically build the project and reload the browser on changes
 * start the server with a similar watcher
 * start browser-sync (this will automatically open your browser)
+
+If you reload the page while gulp is building the client, it will crash the server and you will need to restart it manually. So wait for the auto-reload, or fix this issue :D
