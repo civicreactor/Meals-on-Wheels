@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
 	"start": "node server/index.js",
-	"preinstall": "npm --prefix ./server install ./server
+	"preinstall": "npm --prefix ./server install ./server"
   },
   "author": "",
   "license": "ISC",
