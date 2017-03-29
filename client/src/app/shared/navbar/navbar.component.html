@@ -12,10 +12,19 @@
 true}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/passengers" routerLinkActive="active">Passengers</a>
+            <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/drivers" routerLinkActive="active">Drivers</a>
+            <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
+          </li>
+          <li *ngIf="!loggedIn" class="nav-item">
+            <a class="nav-link" routerLink="/login" routerLinkActive="active">Sign in</a>
+          </li>
+          <li *ngIf="loggedIn" class="nav-item">
+            <a class="nav-link" routerLink="/logout" routerLinkActive="active">Sign out</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/feedback" routerLinkActive="active">Feedback</a>
           </li>
         </ul>
       </div>
