@@ -1,32 +1,32 @@
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
     <div class="container">
-      <a class="navbar-brand" routerLink="/">Meals on wheels</a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+        <a class="navbar-brand" routerLink="/">Meals on wheels</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
 true}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
-          </li>
-          <li *ngIf="!loggedIn" class="nav-item">
-            <a class="nav-link" routerLink="/login" routerLinkActive="active">Sign in</a>
-          </li>
-          <li *ngIf="loggedIn" class="nav-item">
-            <a class="nav-link" routerLink="/logout" routerLinkActive="active">Sign out</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/feedback" routerLinkActive="active">Feedback</a>
-          </li>
-        </ul>
-      </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
+                </li>
+                <li *ngIf="!loggedIn" class="nav-item">
+                    <a class="nav-link" routerLink="/login" routerLinkActive="active">Sign in</a>
+                </li>
+                <li *ngIf="loggedIn" class="nav-item">
+                    <a class="nav-link" routerLink="/logout" routerLinkActive="active">Sign out</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/feedback" routerLinkActive="active">Feedback</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
