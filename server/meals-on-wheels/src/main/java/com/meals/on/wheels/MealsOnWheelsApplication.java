@@ -78,7 +78,7 @@ public class MealsOnWheelsApplication {
 	}
 
 	private Predicate<String> postPaths() {
-		return regex(".*");
+		return or(regex(".*"), regex("/.*"));
 	}
 
 	private ApiInfo apiInfo() {
