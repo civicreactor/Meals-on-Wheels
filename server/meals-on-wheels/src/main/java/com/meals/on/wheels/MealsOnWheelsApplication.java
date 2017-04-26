@@ -27,6 +27,7 @@ import static com.google.common.base.Predicates.or;
 
 @SpringBootApplication
 @EnableSwagger2
+@Configuration
 public class MealsOnWheelsApplication {
 
 	public static void main(String[] args) {
@@ -77,15 +78,15 @@ public class MealsOnWheelsApplication {
 	}
 
 	private Predicate<String> postPaths() {
-		return or(regex("/*"), regex("/*"));
+		return regex(".*");
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("JavaInUse API")
-				.description("JavaInUse API reference for developers")
-				.termsOfServiceUrl("http://javainuse.com")
-				.contact("javainuse@gmail.com").license("JavaInUse License")
-				.licenseUrl("javainuse@gmail.com").version("1.0").build();
+		return new ApiInfoBuilder().title("MealsOnWheels API")
+				.description("API Reference for Meals on Wheels")
+				.termsOfServiceUrl("https://skillsmatter.com/groups/10587-civic-reactor")
+				.contact("https://skillsmatter.com/groups/10587-civic-reactor").license("Civic Reactor")
+				.licenseUrl("https://skillsmatter.com/groups/10587-civic-reactor").version("1.0").build();
 	}
 
 }

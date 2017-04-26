@@ -3,6 +3,7 @@ package com.meals.on.wheels.controllers;
 import com.meals.on.wheels.facades.CustomerFacade;
 import com.meals.on.wheels.models.CustomerModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,7 +16,11 @@ public class CustomerController {
     @Autowired
     private CustomerFacade customerFacade;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/list")
+    @RequestMapping(
+            value = "/list",
+            method = RequestMethod.GET,
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Iterable<CustomerModel>> getCustomers() {
        return ResponseEntity.ok(customerFacade.getAllCustomers());
     }
