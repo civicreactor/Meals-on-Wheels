@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -76,7 +77,7 @@ public class MealsOnWheelsApplication {
 	}
 
 	private Predicate<String> postPaths() {
-		return or(regex("/meals-on-wheels/*"), regex("/meals-on-wheels/*"));
+		return or(regex("/*"), regex("/*"));
 	}
 
 	private ApiInfo apiInfo() {
