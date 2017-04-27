@@ -19,7 +19,6 @@ public class CustomerController {
     @RequestMapping(
             value = "/list",
             method = RequestMethod.GET,
-            consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Iterable<CustomerModel>> getCustomers() {
        return ResponseEntity.ok(customerFacade.getAllCustomers());

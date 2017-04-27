@@ -15,4 +15,12 @@ public class MealService {
     public Iterable<MealModel> getAllMeals() {
         return mealDAO.findAll();
     }
+
+    public void saveOrUpdate(MealModel meal) {
+        mealDAO.save(meal);
+    }
+
+    public MealModel getMealById(Long mealId) {
+        return mealDAO.findOne(mealId);
+    }
 }

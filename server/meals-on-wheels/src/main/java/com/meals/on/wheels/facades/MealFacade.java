@@ -14,4 +14,12 @@ public class MealFacade {
     public Iterable<MealModel> getAllMeals(){
         return mealService.getAllMeals();
     }
+
+    public void addMeal(MealModel meal) {
+        mealService.saveOrUpdate(meal);
+    }
+
+    public MealModel getMeal(Long mealId) {
+        return mealService.getMealById(mealId);
+    }
 }
