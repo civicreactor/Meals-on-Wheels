@@ -20,7 +20,6 @@ public class MealController {
     @RequestMapping(
             value = "/list",
             method = RequestMethod.GET,
-            consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Iterable<MealModel>> getMeals() {
         return ResponseEntity.ok(mealFacade.getAllMeals());
@@ -40,7 +39,6 @@ public class MealController {
     @RequestMapping(
             value = "/{mealId}",
             method = RequestMethod.GET,
-            consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<MealModel> getMeal(@PathVariable(value="mealId") Long mealId) {
         MealModel mealModel = mealFacade.getMeal(mealId);
