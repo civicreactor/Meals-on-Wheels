@@ -1,5 +1,6 @@
 package com.meals.on.wheels;
 
+import org.dozer.DozerBeanMapper;
 import org.h2.server.web.WebServlet;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,6 +15,7 @@ import org.springframework.web.filter.CorsFilter;
 
 
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.common.base.Predicate;
 
@@ -87,6 +89,22 @@ public class MealsOnWheelsApplication {
 				.termsOfServiceUrl("https://skillsmatter.com/groups/10587-civic-reactor")
 				.contact("https://skillsmatter.com/groups/10587-civic-reactor").license("Civic Reactor")
 				.licenseUrl("https://skillsmatter.com/groups/10587-civic-reactor").version("1.0").build();
+	}
+
+
+	@Bean(name = "org.dozer.Mapper")
+	public DozerBeanMapper dozerBean() {
+		/*
+		List<String> mappingFiles = Arrays.asList(
+				"dozer-global-configuration.xml",
+				"dozer-bean-mappings.xml",
+				"more-dozer-bean-mappings.xml"
+		);
+		*/
+
+		DozerBeanMapper dozerBean = new DozerBeanMapper();
+		//dozerBean.setMappingFiles(mappingFiles);
+		return dozerBean;
 	}
 
 }

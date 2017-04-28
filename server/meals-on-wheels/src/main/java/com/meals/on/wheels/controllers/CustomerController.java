@@ -1,5 +1,6 @@
 package com.meals.on.wheels.controllers;
 
+import com.meals.on.wheels.dtos.CustomerDTO;
 import com.meals.on.wheels.facades.CustomerFacade;
 import com.meals.on.wheels.models.CustomerModel;
 import com.meals.on.wheels.models.MealModel;
@@ -19,7 +20,7 @@ public class CustomerController {
             value = "/list",
             method = RequestMethod.GET,
             produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Iterable<CustomerModel>> getCustomers() {
+    public ResponseEntity<Iterable<CustomerDTO>> getCustomers() {
        return ResponseEntity.ok(customerFacade.getAllCustomers());
     }
 
@@ -28,7 +29,7 @@ public class CustomerController {
             method = RequestMethod.POST,
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<?> addCustomer(@RequestBody CustomerModel customer) {
+    public ResponseEntity<?> addCustomer(@RequestBody CustomerDTO customer) {
         customerFacade.addCustomer(customer);
         return ResponseEntity.ok().build();
     }
@@ -37,8 +38,8 @@ public class CustomerController {
             value = "/{customerId}",
             method = RequestMethod.GET,
             produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<CustomerModel> getCustomer(@PathVariable(value="customerId") Long customerId) {
-        CustomerModel customerModel = customerFacade.getCustomer(customerId);
-        return ResponseEntity.ok(customerModel);
+    public ResponseEntity<CustomerDTO> getCustomer(@PathVariable(value="customerId") Long customerId) {
+        CustomerDTO customer = customerFacade.getCustomer(customerId);
+        return ResponseEntity.ok(customer);
     }
 }
