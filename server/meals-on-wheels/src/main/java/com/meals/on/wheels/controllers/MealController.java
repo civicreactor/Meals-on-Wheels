@@ -24,17 +24,16 @@ public class MealController {
     public ResponseEntity<Iterable<MealModel>> getMeals() {
         return ResponseEntity.ok(mealFacade.getAllMeals());
     }
-/*
+
     @RequestMapping(
             value = "/",
             method = RequestMethod.POST,
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity addMeal(@RequestBody MealModel meal) {
+    public ResponseEntity<?> addMeal(@RequestBody MealModel meal) {
         mealFacade.addMeal(meal);
         return ResponseEntity.ok().build();
     }
-*/
 
     @RequestMapping(
             value = "/{mealId}",
