@@ -14,4 +14,12 @@ public class CustomerFacade {
     public Iterable<CustomerModel> getAllCustomers(){
         return customerService.getAllCustomers();
     }
+
+    public void addCustomer(CustomerModel customer) {
+        customerService.saveOrUpdate(customer);
+    }
+
+    public CustomerModel getCustomer(Long customerId) {
+        return customerService.getCustomerById(customerId);
+    }
 }

@@ -14,4 +14,12 @@ public class CustomerService {
     public Iterable<CustomerModel> getAllCustomers() {
         return customerDAO.findAll();
     }
+
+    public CustomerModel getCustomerById(Long customerId) {
+        return customerDAO.findOne(customerId);
+    }
+
+    public void saveOrUpdate(CustomerModel customer) {
+        customerDAO.save(customer);
+    }
 }
