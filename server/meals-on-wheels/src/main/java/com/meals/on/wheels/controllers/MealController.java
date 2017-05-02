@@ -1,5 +1,6 @@
 package com.meals.on.wheels.controllers;
 
+import com.meals.on.wheels.dtos.MealDTO;
 import com.meals.on.wheels.facades.MealFacade;
 import com.meals.on.wheels.models.CustomerModel;
 import com.meals.on.wheels.models.MealModel;
@@ -21,7 +22,7 @@ public class MealController {
             value = "/list",
             method = RequestMethod.GET,
             produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Iterable<MealModel>> getMeals() {
+    public ResponseEntity<Iterable<MealDTO>> getMeals() {
         return ResponseEntity.ok(mealFacade.getAllMeals());
     }
 
@@ -30,7 +31,7 @@ public class MealController {
             method = RequestMethod.POST,
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<?> addMeal(@RequestBody MealModel meal) {
+    public ResponseEntity<?> addMeal(@RequestBody MealDTO meal) {
         mealFacade.addMeal(meal);
         return ResponseEntity.ok().build();
     }
@@ -39,8 +40,8 @@ public class MealController {
             value = "/{mealId}",
             method = RequestMethod.GET,
             produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<MealModel> getMeal(@PathVariable(value="mealId") Long mealId) {
-        MealModel mealModel = mealFacade.getMeal(mealId);
-        return ResponseEntity.ok(mealModel);
+    public ResponseEntity<MealDTO> getMeal(@PathVariable(value="mealId") Long mealId) {
+        MealDTO meal = mealFacade.getMeal(mealId);
+        return ResponseEntity.ok(meal);
     }
 }
