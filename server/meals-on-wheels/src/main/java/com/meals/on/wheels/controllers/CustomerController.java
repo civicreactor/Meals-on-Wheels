@@ -2,8 +2,6 @@ package com.meals.on.wheels.controllers;
 
 import com.meals.on.wheels.dtos.CustomerDTO;
 import com.meals.on.wheels.facades.CustomerFacade;
-import com.meals.on.wheels.models.CustomerModel;
-import com.meals.on.wheels.models.MealModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
