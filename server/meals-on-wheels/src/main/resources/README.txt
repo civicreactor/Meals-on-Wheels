@@ -6,11 +6,11 @@ java -jar target\meals-on-wheels-0.0.1.jar
 
 
 To use swagger and see the documentation open the following URL:
-http://localhost:8080/swagger-ui.html
+http://localhost:8080/meals-on-wheels/swagger-ui.html
 
 
 To connect to the DB, open the following URL (see application.properties for credentials):
-http://localhost:8080/console/login.jsp
+http://localhost:8080/meals-on-wheels/console/login.jsp
 
 
 
