@@ -2,6 +2,7 @@ package com.meals.on.wheels.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
 
 @Entity
 @Table(name = "ORDERS")
@@ -19,8 +20,15 @@ public class OrderModel implements Serializable {
     @JoinColumn(name = "CUSTOMER_ID")
     private CustomerModel customer;
 
+    @ManyToOne
+    @JoinColumn(name = "DRIVER_ID")
+    private DriverModel driver;
+
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+
+    private Date deliveredDate;
+    private Date assignationDate;
 
 
 
@@ -54,5 +62,29 @@ public class OrderModel implements Serializable {
 
     public void setStatus(OrderStatus status) {
         this.status = status;
+    }
+
+    public DriverModel getDriver() {
+        return driver;
+    }
+
+    public void setDriver(DriverModel driver) {
+        this.driver = driver;
+    }
+
+    public Date getDeliveredDate() {
+        return deliveredDate;
+    }
+
+    public void setDeliveredDate(Date deliveredDate) {
+        this.deliveredDate = deliveredDate;
+    }
+
+    public Date getAssignationDate() {
+        return assignationDate;
+    }
+
+    public void setAssignationDate(Date assignationDate) {
+        this.assignationDate = assignationDate;
     }
 }
