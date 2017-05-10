@@ -14,6 +14,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AdminModule } from './admin/admin.module';
+import { ClientModule } from './client/client.module';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
     HttpModule,
     NgbModule.forRoot(),
     AdminModule,
+    ClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
