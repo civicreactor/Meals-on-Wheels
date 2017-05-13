@@ -10,4 +10,4 @@ Download just the /server/meals-on-wheels module see the /server/meals-on-wheels
 Download the whole project but focus only on the files in the /client folder.
 
 ### High Level Use Case
-![Use Case Image](images/MowHlUseCase.png)
+![Use Case Image](documentation/high-level/MowHlUseCase.png)
