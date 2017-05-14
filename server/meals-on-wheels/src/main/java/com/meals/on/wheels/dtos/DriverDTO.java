@@ -1,6 +1,8 @@
 package com.meals.on.wheels.dtos;
 
 
+import java.sql.Date;
+
 public class DriverDTO {
 
     private Long id;
@@ -8,8 +10,9 @@ public class DriverDTO {
     private String surname;
     private String username;
     private String password;
-    private Integer telephone;
+    private String telephone;
     private Boolean available;
+    private Date registrationDate;
 
     public Long getId() {
         return id;
@@ -51,11 +54,11 @@ public class DriverDTO {
         this.password = password;
     }
 
-    public Integer getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(Integer telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 
@@ -65,5 +68,13 @@ public class DriverDTO {
 
     public void setAvailable(Boolean available) {
         this.available = available;
+    }
+
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
     }
 }

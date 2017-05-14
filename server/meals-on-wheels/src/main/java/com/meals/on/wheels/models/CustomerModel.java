@@ -2,6 +2,7 @@ package com.meals.on.wheels.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
 
 @Entity
 @Table(name = "CUSTOMER")
@@ -15,7 +16,8 @@ public class CustomerModel implements Serializable {
     private String surname;
     private String username;
     private String password;
-    private Integer telephone;
+    private String telephone;
+    private Date registrationDate;
 
     public Long getId() {
         return id;
@@ -57,11 +59,19 @@ public class CustomerModel implements Serializable {
         this.password = password;
     }
 
-    public Integer getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(Integer telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
     }
 }
