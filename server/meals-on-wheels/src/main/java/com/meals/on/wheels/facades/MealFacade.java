@@ -30,7 +30,7 @@ public class MealFacade {
     }
 
     public void addMeal(MealDTO meal) {
-        mealService.saveOrUpdate(mapper.map(meal, MealModel.class));
+        mealService.save(mapper.map(meal, MealModel.class));
     }
 
     public MealDTO getMeal(Long mealId) {

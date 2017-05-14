@@ -1,41 +1,22 @@
-package com.meals.on.wheels.models;
+package com.meals.on.wheels.dtos;
 
 import com.meals.on.wheels.enums.OrderStatus;
+import com.meals.on.wheels.models.CustomerModel;
+import com.meals.on.wheels.models.DriverModel;
+import com.meals.on.wheels.models.MealModel;
 
-import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Date;
 
-@Entity
-@Table(name = "ORDERS"/*, uniqueConstraints = {@UniqueConstraint(columnNames={"CUSTOMER_ID", "orderedOnDate"})}*/)
-/* Enable the constraint above only when defined the scenarios with Anna */
-public class OrderModel implements Serializable {
+public class OrderDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column( name= "ORDER_ID")
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "MEAL_ID")
     private MealModel meal;
-
-    @ManyToOne
-    @JoinColumn(name = "CUSTOMER_ID")
     private CustomerModel customer;
-
-    @ManyToOne
-    @JoinColumn(name = "DRIVER_ID")
     private DriverModel driver;
-
-    @Enumerated(EnumType.STRING)
     private OrderStatus status;
-
     private Date deliveredDate;
     private Date assignationDate;
     private Date orderedOnDate;
-
-
 
     public Long getId() {
         return id;
@@ -61,20 +42,20 @@ public class OrderModel implements Serializable {
         this.customer = customer;
     }
 
-    public OrderStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(OrderStatus status) {
-        this.status = status;
-    }
-
     public DriverModel getDriver() {
         return driver;
     }
 
     public void setDriver(DriverModel driver) {
         this.driver = driver;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
     }
 
     public Date getDeliveredDate() {

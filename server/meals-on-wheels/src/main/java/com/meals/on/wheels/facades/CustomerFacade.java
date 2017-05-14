@@ -28,7 +28,7 @@ public class CustomerFacade {
     }
 
     public void addCustomer(CustomerDTO customer) {
-        customerService.saveOrUpdate(mapper.map(customer, CustomerModel.class));
+        customerService.save(mapper.map(customer, CustomerModel.class));
     }
 
     public CustomerDTO getCustomer(Long customerId) {

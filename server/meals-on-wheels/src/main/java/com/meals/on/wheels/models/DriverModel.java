@@ -8,9 +8,10 @@ import java.io.Serializable;
 public class DriverModel implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column( name= "DRIVER_ID")
     private Long id;
+
     private String name;
     private String surname;
     private String username;

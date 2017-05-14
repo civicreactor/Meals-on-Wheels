@@ -11,10 +11,13 @@ import java.io.Serializable;
 public class MealModel implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column( name= "MEAL_ID")
     private Long id;
+
+    @Enumerated(EnumType.STRING)
     private MealType type;
+
     private String description;
     private Boolean available;
 

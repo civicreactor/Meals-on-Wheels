@@ -15,7 +15,7 @@ public class DriverService {
         return driverDAO.findAll();
     }
 
-    public void saveOrUpdate(DriverModel driver) {
+    public void save(DriverModel driver) {
         driverDAO.save(driver);
     }
 
