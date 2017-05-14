@@ -8,5 +8,7 @@ public interface CustomerFacade {
 
     void addCustomer(CustomerDTO customer);
 
+
     CustomerDTO getCustomer(Long customerId);
+
 }
