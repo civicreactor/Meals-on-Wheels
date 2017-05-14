@@ -1,4 +1,4 @@
-package com.meals.on.wheels.models;
+package com.meals.on.wheels.enums;
 
 
 public enum OrderStatus {

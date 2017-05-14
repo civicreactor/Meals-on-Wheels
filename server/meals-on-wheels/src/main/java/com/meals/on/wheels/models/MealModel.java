@@ -1,6 +1,8 @@
 package com.meals.on.wheels.models;
 
 
+import com.meals.on.wheels.enums.MealType;
+
 import javax.persistence.*;
 import java.io.Serializable;
 

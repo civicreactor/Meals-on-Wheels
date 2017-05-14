@@ -1,5 +1,7 @@
 package com.meals.on.wheels.models;
 
+import com.meals.on.wheels.enums.OrderStatus;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
