@@ -16,7 +16,7 @@ public class MealService {
         return mealDAO.findAll();
     }
 
-    public void saveOrUpdate(MealModel meal) {
+    public void save(MealModel meal) {
         mealDAO.save(meal);
     }
 

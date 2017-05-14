@@ -1,6 +1,8 @@
 package com.meals.on.wheels.models;
 
 
+import com.meals.on.wheels.enums.MealType;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -9,10 +11,13 @@ import java.io.Serializable;
 public class MealModel implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column( name= "MEAL_ID")
     private Long id;
-    private String type;
+
+    @Enumerated(EnumType.STRING)
+    private MealType type;
+
     private String description;
     private Boolean available;
 
@@ -24,11 +29,11 @@ public class MealModel implements Serializable {
         this.id = id;
     }
 
-    public String getType() {
+    public MealType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(MealType type) {
         this.type = type;
     }
 

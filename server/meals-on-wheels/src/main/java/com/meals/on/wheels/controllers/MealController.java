@@ -2,6 +2,7 @@ package com.meals.on.wheels.controllers;
 
 import com.meals.on.wheels.dtos.MealDTO;
 import com.meals.on.wheels.facades.MealFacade;
+import com.meals.on.wheels.enums.MealType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -40,5 +41,13 @@ public class MealController {
     public ResponseEntity<MealDTO> getMeal(@PathVariable(value="mealId") Long mealId) {
         MealDTO meal = mealFacade.getMeal(mealId);
         return ResponseEntity.ok(meal);
+    }
+
+    @RequestMapping(
+            value = "/types",
+            method = RequestMethod.GET,
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<Iterable<MealType>> getMealTypes() {
+        return ResponseEntity.ok(mealFacade.getAllMealTypes());
     }
 }

@@ -1,12 +1,16 @@
 package com.meals.on.wheels.facades;
 
 import com.meals.on.wheels.dtos.MealDTO;
+import com.meals.on.wheels.enums.MealType;
 import com.meals.on.wheels.models.MealModel;
 import com.meals.on.wheels.services.MealService;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -26,10 +30,14 @@ public class MealFacade {
     }
 
     public void addMeal(MealDTO meal) {
-        mealService.saveOrUpdate(mapper.map(meal, MealModel.class));
+        mealService.save(mapper.map(meal, MealModel.class));
     }
 
     public MealDTO getMeal(Long mealId) {
         return mapper.map(mealService.getMealById(mealId), MealDTO.class);
+    }
+
+    public Iterable<MealType> getAllMealTypes() {
+       return Arrays.asList(MealType.values());
     }
 }

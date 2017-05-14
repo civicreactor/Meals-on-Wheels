@@ -26,7 +26,7 @@ public class DriverFacade {
     }
 
     public void addDriver(DriverDTO driver) {
-        driverService.saveOrUpdate(mapper.map(driver, DriverModel.class));
+        driverService.save(mapper.map(driver, DriverModel.class));
     }
 
     public DriverDTO getDriver(Long driverId) {

@@ -20,7 +20,7 @@ public class CustomerService {
         return customerDAO.findOne(customerId);
     }
 
-    public void saveOrUpdate(CustomerModel customer) {
+    public void save(CustomerModel customer) {
         customerDAO.save(customer);
     }
 }
