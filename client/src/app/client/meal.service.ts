@@ -7,11 +7,11 @@ import { mealEndpoint } from '../config/config';
 @Injectable()
 export class MealService {
 
-  constructor(private http: Http) { }
+    constructor(private http: Http) { }
 
-  getMealList() {
-    return this.http.get(mealEndpoint + "/list")
-      .map(response => response.json());
-  }
+    getMealList() {
+        return this.http.get(mealEndpoint + "/list")
+            .map(response => response.json());
+    }
 
 }
