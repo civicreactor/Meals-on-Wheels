@@ -1,0 +1,7 @@
+.nav-item {
+    margin-right: 20px;
+}
+
+.active {
+    font-weight: 600;
+}

@@ -2,16 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { AdminComponent } from './admin.component';
-import { AdminLoginComponent } from './admin-login/admin-login.component';
-import { AdminRegistrationComponent } from './admin-registration/admin-registration.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
+import { AdminCustomerComponent } from './admin-customer/admin-customer.component';
+import { AdminOrderComponent } from './admin-order/admin-order.component';
+import { AdminMealModule } from './admin-meal/admin-meal.module';
+
 
 const adminRoutes: Routes = [
   {
-    path: 'drivers',
+    path: 'admin',
     component: AdminComponent,
     children: [
       {
@@ -19,13 +20,13 @@ const adminRoutes: Routes = [
         component: AdminHomeComponent,
       },
       {
-        path: 'register',
-        component: AdminRegistrationComponent,
+        path: 'customer',
+        component: AdminCustomerComponent,
       },
       {
-        path: 'login',
-        component: AdminLoginComponent,
-      }
+        path: 'order',
+        component: AdminOrderComponent,
+      },
     ]
   }
 ];
@@ -34,12 +35,12 @@ const adminRoutes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(adminRoutes),
-    NgbModule.forRoot()
+    AdminMealModule
   ],
   exports: [
     RouterModule
   ],
-  declarations: [AdminComponent, AdminLoginComponent, AdminRegistrationComponent, AdminHomeComponent]
+  declarations: [AdminComponent, AdminHomeComponent, AdminNavbarComponent, AdminCustomerComponent, AdminOrderComponent]
 })
 
 export class AdminModule { }
