@@ -1,4 +1,4 @@
-const server = "http://meals-on-wheels:8080";
+const server = "http://localhost:8080/meals-on-wheels";
 
 const mealEndpointPrefix = "/meal";
 
