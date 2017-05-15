@@ -15,7 +15,7 @@
         <label for="type" class="col-2 col-form-label">Example select</label>
         <div class="col-8">
             <select name="type" [(ngModel)]="meal.type" class="form-control" id="type">
-                <option *ngFor="let type of mealTypes" [value]="type">{{type}}</option>
+                <option *ngFor="let type of mealTypes" [value]="type">{{type | capitalise}}</option>
             </select>
         </div>
     </div>
