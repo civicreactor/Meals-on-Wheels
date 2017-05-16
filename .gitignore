@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+/out/
 
 # dependencies
 /node_modules
@@ -16,6 +17,15 @@
 *.launch
 .settings/
 *.sublime-workspace
+
+#Intellij iml
+*.iml
+modules.xml
+.idea/misc.xml
+*.ipr
+
+#Project format
+*.iws
 
 # IDE - VSCode
 .vscode/*
