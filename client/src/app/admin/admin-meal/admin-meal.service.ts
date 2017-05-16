@@ -24,7 +24,7 @@ export class AdminMealService {
     addMeal(meal) {
         console.log("Adding meal")
         return this.http.post(mealEndpoint + "/", meal)
-            .map(response => response.json());
+            //.map(response => response.json());
     }
 
 }
