@@ -20,12 +20,14 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+		"../node_modules/angular2-toaster/toaster.css"
       ],
       "scripts": [
 		"../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/tether/dist/js/tether.min.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+		"../node_modules/angular2-toaster/bundles/angular2-toaster.umd.js"
 		],
       "environmentSource": "environments/environment.ts",
       "environments": {
