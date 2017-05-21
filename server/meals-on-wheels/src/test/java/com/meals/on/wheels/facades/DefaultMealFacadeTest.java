@@ -7,6 +7,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.dozer.Mapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -48,7 +49,9 @@ public class DefaultMealFacadeTest {
         // tests
         assertNotNull(meals);
         assertEquals(CollectionUtils.size(meals), 0);
-        verify(mealService, times(1)).getAllMeals();
+        InOrder inOrder = inOrder(mealService, mapper);
+        inOrder.verify(mealService, times(1)).getAllMeals();
+        inOrder.verify(mapper, times(0)).map(isA(MealModel.class), eq(MealDTO.class));
     }
 
     @Test
@@ -60,7 +63,9 @@ public class DefaultMealFacadeTest {
         // tests
         assertNotNull(meals);
         assertEquals(CollectionUtils.size(meals), 1);
-        verify(mealService, times(1)).getAllMeals();
+        InOrder inOrder = inOrder(mealService, mapper);
+        inOrder.verify(mealService, times(1)).getAllMeals();
+        inOrder.verify(mapper).map(isA(MealModel.class), eq(MealDTO.class));
     }
 
     @Test
@@ -71,7 +76,9 @@ public class DefaultMealFacadeTest {
         MealDTO meal = mealFacade.getMeal(1L);
         // tests
         assertNull(meal);
-        verify(mealService, times(1)).getMealById(isA(Long.class));
+        InOrder inOrder = inOrder(mealService, mapper);
+        inOrder.verify(mealService, times(1)).getMealById(isA(Long.class));
+        inOrder.verify(mapper, times(0)).map(isA(MealModel.class), eq(MealDTO.class));
     }
 
     @Test
@@ -84,8 +91,9 @@ public class DefaultMealFacadeTest {
         // tests
         assertNotNull(meal);
         assertEquals(meal, mealDTO);
-        verify(mealService, times(1)).getMealById(isA(Long.class));
-        verify(mapper).map(isA(MealModel.class), eq(MealDTO.class));
+        InOrder inOrder = inOrder(mealService, mapper);
+        inOrder.verify(mealService, times(1)).getMealById(isA(Long.class));
+        inOrder.verify(mapper).map(isA(MealModel.class), eq(MealDTO.class));
     }
 
     @Test
@@ -96,8 +104,9 @@ public class DefaultMealFacadeTest {
         // call
         mealFacade.addMeal(mealDTO);
         // tests
-        verify(mealService, times(1)).save(isA(MealModel.class));
-        verify(mapper).map(isA(MealDTO.class), eq(MealModel.class));
+        InOrder inOrder = inOrder(mealService, mapper);
+        inOrder.verify(mapper).map(isA(MealDTO.class), eq(MealModel.class));
+        inOrder.verify(mealService, times(1)).save(isA(MealModel.class));
     }
 
     @Test(expected = Exception.class)

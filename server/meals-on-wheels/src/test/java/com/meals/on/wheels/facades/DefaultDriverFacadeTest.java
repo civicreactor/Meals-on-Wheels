@@ -7,6 +7,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.dozer.Mapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -48,7 +49,9 @@ public class DefaultDriverFacadeTest {
         // tests
         assertNotNull(drivers);
         assertEquals(CollectionUtils.size(drivers), 0);
-        verify(driverService, times(1)).getAllDrivers();
+        InOrder inOrder = inOrder(driverService, mapper);
+        inOrder.verify(driverService, times(1)).getAllDrivers();
+        inOrder.verify(mapper, times(0)).map(isA(DriverModel.class), eq(DriverDTO.class));
     }
 
     @Test
@@ -60,7 +63,9 @@ public class DefaultDriverFacadeTest {
         // tests
         assertNotNull(drivers);
         assertEquals(CollectionUtils.size(drivers), 1);
-        verify(driverService, times(1)).getAllDrivers();
+        InOrder inOrder = inOrder(driverService, mapper);
+        inOrder.verify(driverService, times(1)).getAllDrivers();
+        inOrder.verify(mapper).map(isA(DriverModel.class), eq(DriverDTO.class));
     }
 
     @Test
@@ -71,7 +76,9 @@ public class DefaultDriverFacadeTest {
         DriverDTO driver = driverFacade.getDriver(1L);
         // tests
         assertNull(driver);
-        verify(driverService, times(1)).getDriverById(isA(Long.class));
+        InOrder inOrder = inOrder(driverService, mapper);
+        inOrder.verify(driverService, times(1)).getDriverById(isA(Long.class));
+        inOrder.verify(mapper, times(0)).map(isA(DriverModel.class), eq(DriverDTO.class));
     }
 
     @Test
@@ -84,8 +91,9 @@ public class DefaultDriverFacadeTest {
         // tests
         assertNotNull(driver);
         assertEquals(driver, driverDTO);
-        verify(driverService, times(1)).getDriverById(isA(Long.class));
-        verify(mapper).map(isA(DriverModel.class), eq(DriverDTO.class));
+        InOrder inOrder = inOrder(driverService, mapper);
+        inOrder.verify(driverService, times(1)).getDriverById(isA(Long.class));
+        inOrder.verify(mapper).map(isA(DriverModel.class), eq(DriverDTO.class));
     }
 
     @Test
@@ -96,8 +104,9 @@ public class DefaultDriverFacadeTest {
         // call
         driverFacade.addDriver(driverDTO);
         // tests
-        verify(driverService, times(1)).save(isA(DriverModel.class));
-        verify(mapper).map(isA(DriverDTO.class), eq(DriverModel.class));
+        InOrder inOrder = inOrder(driverService, mapper);
+        inOrder.verify(mapper).map(isA(DriverDTO.class), eq(DriverModel.class));
+        inOrder.verify(driverService, times(1)).save(isA(DriverModel.class));
     }
 
     @Test(expected = Exception.class)

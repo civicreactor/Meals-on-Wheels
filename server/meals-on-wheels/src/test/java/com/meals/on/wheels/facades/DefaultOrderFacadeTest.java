@@ -1,12 +1,12 @@
 package com.meals.on.wheels.facades;
 
 import com.meals.on.wheels.dtos.OrderDTO;
-import com.meals.on.wheels.models.MealModel;
 import com.meals.on.wheels.models.OrderModel;
 import com.meals.on.wheels.services.OrderService;
 import org.dozer.Mapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -43,8 +43,9 @@ public class DefaultOrderFacadeTest {
         // call
         orderFacade.saveOrder(orderDTO);
         // tests
-        verify(orderService, times(1)).save(isA(OrderModel.class));
-        verify(mapper).map(isA(OrderDTO.class), eq(OrderModel.class));
+        InOrder inOrder = inOrder(orderService, mapper);
+        inOrder.verify(mapper).map(isA(OrderDTO.class), eq(OrderModel.class));
+        inOrder.verify(orderService, times(1)).save(isA(OrderModel.class));
     }
 
     @Test(expected = Exception.class)

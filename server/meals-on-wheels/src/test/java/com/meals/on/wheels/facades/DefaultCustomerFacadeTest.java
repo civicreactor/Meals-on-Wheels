@@ -8,6 +8,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.dozer.Mapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -38,6 +39,8 @@ public class DefaultCustomerFacadeTest {
     @MockBean
     private CustomerDTO customerDTO;
 
+
+
     @Test
     public void getAllCustomersNoResults(){
         // setup
@@ -59,7 +62,9 @@ public class DefaultCustomerFacadeTest {
         // tests
         assertNotNull(customers);
         assertEquals(CollectionUtils.size(customers), 1);
-        verify(customerService, times(1)).getAllCustomers();
+        InOrder inOrder = inOrder(customerService, mapper);
+        inOrder.verify(customerService, times(1)).getAllCustomers();
+        inOrder.verify(mapper).map(isA(CustomerModel.class), eq(CustomerDTO.class));
     }
 
     @Test
@@ -70,7 +75,9 @@ public class DefaultCustomerFacadeTest {
         CustomerDTO customer = customerFacade.getCustomer(1L);
         // tests
         assertNull(customer);
-        verify(customerService, times(1)).getCustomerById(isA(Long.class));
+        InOrder inOrder = inOrder(customerService, mapper);
+        inOrder.verify(customerService, times(1)).getCustomerById(isA(Long.class));
+        inOrder.verify(mapper, times(0)).map(isA(CustomerModel.class), eq(CustomerDTO.class));
     }
 
     @Test
@@ -83,8 +90,9 @@ public class DefaultCustomerFacadeTest {
         // tests
         assertNotNull(customer);
         assertEquals(customer, customerDTO);
-        verify(customerService, times(1)).getCustomerById(isA(Long.class));
-        verify(mapper).map(isA(CustomerModel.class), eq(CustomerDTO.class));
+        InOrder inOrder = inOrder(customerService, mapper);
+        inOrder.verify(customerService, times(1)).getCustomerById(isA(Long.class));
+        inOrder.verify(mapper).map(isA(CustomerModel.class), eq(CustomerDTO.class));
     }
 
     @Test
@@ -95,8 +103,9 @@ public class DefaultCustomerFacadeTest {
         // call
         customerFacade.addCustomer(customerDTO);
         // tests
-        verify(customerService, times(1)).save(isA(CustomerModel.class));
-        verify(mapper).map(isA(CustomerDTO.class), eq(CustomerModel.class));
+        InOrder inOrder = inOrder(customerService, mapper);
+        inOrder.verify(mapper).map(isA(CustomerDTO.class), eq(CustomerModel.class));
+        inOrder.verify(customerService, times(1)).save(isA(CustomerModel.class));
     }
 
     @Test(expected = Exception.class)
