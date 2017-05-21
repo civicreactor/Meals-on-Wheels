@@ -5,7 +5,7 @@ import com.meals.on.wheels.models.DriverModel;
 
 public interface DriverService {
 
-     Iterable<DriverModel> getAllMeals();
+     Iterable<DriverModel> getAllDrivers();
 
      void save(DriverModel driver);
 

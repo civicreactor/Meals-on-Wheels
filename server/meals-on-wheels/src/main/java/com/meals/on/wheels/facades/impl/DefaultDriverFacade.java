@@ -17,19 +17,20 @@ public class DefaultDriverFacade extends AbstractFacade implements DriverFacade 
     @Autowired
     private DriverService driverService;
 
-    @Autowired
-    private Mapper mapper;
 
+    @Override
     public Iterable<DriverDTO> getAllDrivers(){
-        Iterable<DriverModel> driverModels = driverService.getAllMeals();
+        Iterable<DriverModel> driverModels = driverService.getAllDrivers();
         Iterable<DriverDTO> driverDTOs = StreamSupport.stream(driverModels.spliterator(), false).map(driverModel -> mapper.map(driverModel , DriverDTO.class)).collect(Collectors.toList());
         return driverDTOs;
     }
 
+    @Override
     public void addDriver(DriverDTO driver) {
         driverService.save(mapper.map(driver, DriverModel.class));
     }
 
+    @Override
     public DriverDTO getDriver(Long driverId) {
         return mapper.map(driverService.getDriverById(driverId), DriverDTO.class);
     }

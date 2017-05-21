@@ -19,24 +19,25 @@ public class DefaultMealFacade extends AbstractFacade implements MealFacade {
     @Autowired
     private MealService mealService;
 
-    @Autowired
-    private Mapper mapper;
-
+    @Override
     public Iterable<MealDTO> getAllMeals(){
         Iterable<MealModel> mealModels = mealService.getAllMeals();
         Iterable<MealDTO> mealDTOs = StreamSupport.stream(mealModels.spliterator(), false).map(mealModel -> mapper.map(mealModel , MealDTO.class)).collect(Collectors.toList());
         return mealDTOs;
     }
 
+    @Override
     public void addMeal(MealDTO meal) {
         mealService.save(mapper.map(meal, MealModel.class));
     }
 
+    @Override
     public MealDTO getMeal(Long mealId) {
         return mapper.map(mealService.getMealById(mealId), MealDTO.class);
     }
 
+    @Override
     public Iterable<MealType> getAllMealTypes() {
-       return Arrays.asList(MealType.values());
+       return mealService.getAllMealTypes();
     }
 }
