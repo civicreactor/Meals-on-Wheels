@@ -17,19 +17,19 @@ public class DefaultCustomerFacade extends AbstractFacade implements CustomerFac
     @Autowired
     private CustomerService customerService;
 
-
-
+    @Override
     public Iterable<CustomerDTO> getAllCustomers() {
         Iterable<CustomerModel> customerModels = customerService.getAllCustomers();
         Iterable<CustomerDTO> customerDTOs = StreamSupport.stream(customerModels.spliterator(), false).map(customerModel -> mapper.map(customerModel , CustomerDTO.class)).collect(Collectors.toList());
         return customerDTOs;
-
     }
 
+    @Override
     public void addCustomer(CustomerDTO customer) {
         customerService.save(mapper.map(customer, CustomerModel.class));
     }
 
+    @Override
     public CustomerDTO getCustomer(Long customerId) {
         return mapper.map(customerService.getCustomerById(customerId), CustomerDTO.class);
     }
