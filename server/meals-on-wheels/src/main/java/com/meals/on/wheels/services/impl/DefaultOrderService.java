@@ -15,6 +15,7 @@ public class DefaultOrderService implements OrderService {
     @Autowired
     private OrderDAO orderDAO;
 
+    @Override
     public OrderModel save(OrderModel order) {
         order.setStatus(OrderStatus.QUEUED);
         order.setOrderedOnDate(new Date(System.currentTimeMillis()));

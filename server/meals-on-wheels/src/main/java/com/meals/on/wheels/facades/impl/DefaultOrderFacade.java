@@ -14,10 +14,7 @@ public class DefaultOrderFacade extends AbstractFacade implements OrderFacade {
     @Autowired
     private OrderService orderService;
 
-    @Autowired
-    private Mapper mapper;
-
-
+    @Override
     public OrderDTO saveOrder(OrderDTO order){
         OrderModel savedOrder = orderService.save(mapper.map(order, OrderModel.class));
         return mapper.map(savedOrder, OrderDTO.class);

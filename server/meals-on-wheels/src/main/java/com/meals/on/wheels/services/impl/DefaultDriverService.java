@@ -12,14 +12,17 @@ public class DefaultDriverService implements DriverService {
     @Autowired
     private DriverDAO driverDAO;
 
-    public Iterable<DriverModel> getAllMeals() {
+    @Override
+    public Iterable<DriverModel> getAllDrivers() {
         return driverDAO.findAll();
     }
 
+    @Override
     public void save(DriverModel driver) {
         driverDAO.save(driver);
     }
 
+    @Override
     public DriverModel getDriverById(Long mealId) {
         return driverDAO.findOne(mealId);
     }
