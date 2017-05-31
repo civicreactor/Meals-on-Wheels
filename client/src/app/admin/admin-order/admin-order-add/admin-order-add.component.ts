@@ -12,20 +12,18 @@ import "rxjs/add/operator/takeWhile";
     templateUrl: './admin-order-add.component.html',
     styleUrls: ['./admin-order-add.component.css']
 })
-export class AdminOrderAddComponent implements OnInit, OnDestroy {
+export class AdminOrderAddComponent implements OnInit {
 
     constructor(private mealService: AdminMealService, private orderService: AdminOrderService, private toaster: ToasterService) { }
 
-    alive = true;
 
     order = {};
-    meals;
+    types;
 
     ngOnInit() {
-        this.mealService.getMeals()
-            .takeWhile(() => this.alive)
-            .subscribe(meals => {
-                this.meals = meals;
+        this.mealService.getMealTypes()
+            .subscribe(types => {
+                this.types = types;
             }, error => {
                 console.error('Error:', error)
             })
@@ -34,7 +32,6 @@ export class AdminOrderAddComponent implements OnInit, OnDestroy {
     submitOrder = function () {
         console.log(this.order)
         this.orderService.addOrder(this.meal)
-            .takeWhile(() => this.alive)
             .subscribe(res => {
                 console.log("Order added", res);
                 this.toaster.pop('success', 'Success adding order', res);
@@ -43,9 +40,4 @@ export class AdminOrderAddComponent implements OnInit, OnDestroy {
                 this.toaster.pop('error', 'Error adding order', error);
             });
     }
-
-    ngOnDestroy() {
-        this.alive = false;
-    }
-
 }
