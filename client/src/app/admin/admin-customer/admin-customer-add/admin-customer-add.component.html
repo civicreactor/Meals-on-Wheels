@@ -1,0 +1,28 @@
+<form style="margin-top: 50px">
+    <div class="form-group row">
+        <label for="firstName" class="col-2 col-form-label">First name</label>
+        <div class="col-8">
+            <input name="firstName" class="form-control" type="text" id="firstName" [(ngModel)]="customer.name">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="lastName" class="col-2 col-form-label">Last name</label>
+        <div class="col-8">
+            <input name="lastName" class="form-control" type="text" id="lastName" [(ngModel)]="customer.surname">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="address" class="col-2 col-form-label">Address</label>
+        <div class="col-8">
+            <input name="address" class="form-control" type="text" id="address" [(ngModel)]="customer.address">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="phone" class="col-2 col-form-label">Phone number</label>
+        <div class="col-8">
+            <input name="phone" class="form-control" type="text" id="phone" [(ngModel)]="customer.telephone">
+        </div>
+    </div>
+    <button type="submit" (click)="submitCustomer()" class="btn btn-success">Submit</button>
+
+</form>

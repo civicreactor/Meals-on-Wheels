@@ -18,11 +18,11 @@ const mealRoutes: Routes = [
         children: [
             {
                 path: '',
-                component: AdminMealListComponent,
+                component: AdminMealListComponent
             },
             {
                 path: 'add',
-                component: AdminMealAddComponent,
+                component: AdminMealAddComponent
             }
         ]
     }

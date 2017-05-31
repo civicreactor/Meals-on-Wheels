@@ -9,7 +9,7 @@ export class AdminMealService {
 
     constructor(private http: Http) { }
 
-    getMealList() {
+    getMeals() {
         console.log("Getting list of meals")
         return this.http.get(mealEndpoint + "/list")
             .map(response => response.json());

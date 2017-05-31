@@ -8,9 +8,10 @@ import { SharedModule } from '../shared/shared.module'
 import { AdminComponent } from './admin.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
-import { AdminCustomerComponent } from './admin-customer/admin-customer.component';
-import { AdminOrderComponent } from './admin-order/admin-order.component';
 import { AdminMealModule } from './admin-meal/admin-meal.module';
+import { AdminOrderModule } from './admin-order/admin-order.module';
+import { AdminCustomerModule } from './admin-customer/admin-customer.module';
+
 
 const adminRoutes: Routes = [
     {
@@ -19,16 +20,8 @@ const adminRoutes: Routes = [
         children: [
             {
                 path: '',
-                component: AdminHomeComponent,
-            },
-            {
-                path: 'customer',
-                component: AdminCustomerComponent,
-            },
-            {
-                path: 'order',
-                component: AdminOrderComponent,
-            },
+                component: AdminHomeComponent
+            }
         ]
     }
 ];
@@ -37,13 +30,15 @@ const adminRoutes: Routes = [
     imports: [
         RouterModule.forChild(adminRoutes),
         AdminMealModule,
+        AdminOrderModule,
+        AdminCustomerModule,
         SharedModule,
         ToasterModule
     ],
     exports: [
         RouterModule
     ],
-    declarations: [AdminComponent, AdminHomeComponent, AdminNavbarComponent, AdminCustomerComponent, AdminOrderComponent]
+    declarations: [AdminComponent, AdminHomeComponent, AdminNavbarComponent]
 })
 
 export class AdminModule { }
