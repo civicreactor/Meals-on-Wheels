@@ -20,8 +20,7 @@ export class AdminMealListComponent implements OnInit, OnDestroy {
         this.mealService.getMeals()
             .takeWhile(() => this.alive)
             .subscribe(meals => {
-                this.meals = meals.map(meal => JSON.stringify(meal))
-            }, error => {
+this.meals = meals            }, error => {
                 console.error('Error:', error)
             });
     }
