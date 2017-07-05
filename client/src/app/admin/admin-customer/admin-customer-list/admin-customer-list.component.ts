@@ -16,7 +16,6 @@ ngOnInit() {
          this.customerService.getCustomers()
              .subscribe(customers => {
                this.customers = customers
-                console.log("suscesfully")
              }, error => {
                  console.error('Error:', error)
              });

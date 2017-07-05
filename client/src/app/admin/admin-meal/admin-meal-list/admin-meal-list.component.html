@@ -1,15 +1,8 @@
-
-<h4>
-     admin-meal-list works!
- 
-</h4>
-
-
 <table class="table table-bordered">
     <th>Type</th>
     <th>Description</th>
-
-    <tr *ngFor="let meal of meals"> <td>{{meal.type}}</td><td>{{meal.description}}</td></tr>
-
-
+<tr *ngFor="let meal of meals">
+        <td>{{meal.type}}</td>
+        <td>{{meal.description}}</td>
+    </tr>
 </table>
