@@ -1,8 +1,5 @@
-<p>
-  client-meal-list works!
-</p>
-<ul>
-  <li *ngFor="let meal of meals">
-    {{meal}}
-  </li>
-</ul>
+<table class="table table-bordered">
+  <th>NAME</th>
+  <th>SURNAME</th>
+  <tr *ngFor="let meal of meals"> <td>{{meal.id}}</td><td>{{meal.type}}</td></tr>
+</table> 

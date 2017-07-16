@@ -1,4 +1,9 @@
-<p>
-  admin-customer-list works!
-</p>
+ <p>
+   admin-customer-list works!
+ </p>
 <p *ngFor="let customer of customers">{{customer}}</p>
+<table class="table table-bordered">
+  <th>NAME</th>
+  <th>SURNAME</th>
+  <tr *ngFor="let custom of customers"> <td>{{custom.name}}</td><td>{{custom.surname}}</td></tr>
+</table>

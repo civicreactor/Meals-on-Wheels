@@ -12,13 +12,13 @@ export class AdminCustomerListComponent implements OnInit {
 
     customers;
 
-    ngOnInit() {
-        this.customerService.getCustomers()
-            .subscribe(customers => {
-                this.customers = customers.map(meal => JSON.stringify(meal))
-            }, error => {
-                console.error('Error:', error)
-            });
+ngOnInit() {
+         this.customerService.getCustomers()
+             .subscribe(customers => {
+               this.customers = customers
+             }, error => {
+                 console.error('Error:', error)
+             });
     }
 
 }

@@ -19,7 +19,7 @@ export class ClientMealListComponent implements OnInit, OnDestroy {
         this.mealService.getMealList()
             .takeWhile(() => this.alive)
             .subscribe(meals => {
-                this.meals = meals.map(meal => JSON.stringify(meal))
+                 this.meals = meals;
             }, error => {
                 console.error('Error:', error)
             });
