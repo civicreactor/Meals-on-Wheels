@@ -15,7 +15,7 @@ export class ClientMealListComponent implements OnInit, OnDestroy {
     alive = true;
     meals;
 
-    ngOnInit() {
+    loadMeals() {
         this.mealService.getMealList()
             .takeWhile(() => this.alive)
             .subscribe(meals => {
@@ -23,6 +23,10 @@ export class ClientMealListComponent implements OnInit, OnDestroy {
             }, error => {
                 console.error('Error:', error)
             });
+    }
+
+    ngOnInit() {
+        this.loadMeals();
     }
 
     ngOnDestroy() {
