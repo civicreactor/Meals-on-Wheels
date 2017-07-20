@@ -1,16 +1,19 @@
-import { async, ComponentFixture, TestBed, fakeAsync, flushMicrotasks, tick } from '@angular/core/testing';
-import { MockBackend, MockConnection } from '@angular/http/testing';
-import { Headers } from '@angular/http';
+
 import { ClientMealListComponent } from './client-meal-list.component';
-import { JsonpModule, Jsonp, BaseRequestOptions, ResponseOptions, Response, Http } from "@angular/http";
 import { MealService } from '../meal.service';
+import {Observable} from "rxjs/Rx";
+import { async } from "@angular/core/testing";
+
+class MockMealService {
+  constructor(private validData) { } 
+  getMealList() {
+    return Observable.of(this.validData) ;
+  }
+}
 
 describe('ClientMealListComponent', () => {
   let component: ClientMealListComponent;
-  let fixture: ComponentFixture<ClientMealListComponent>;
   let service: MealService
-  let server: MockBackend
-
   let validResponse = [
     {
         "id": 20,
@@ -24,35 +27,31 @@ describe('ClientMealListComponent', () => {
         "description": "Burger & Chips",
         "available": true
     }
-]
+  ];
+
+  let mockMealService
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ClientMealListComponent ],
-      providers: [
-            MealService,
-            MockBackend,
-            BaseRequestOptions,
-            ClientMealListComponent,
-            {
-            provide: Http,
-            useFactory: (server, options) => new Http(server, options),
-            deps: [MockBackend, BaseRequestOptions]
-            }
-        ]
-    }).compileComponents().then(() => {
-
-        fixture = TestBed.createComponent(ClientMealListComponent);
-        component = fixture.componentInstance;
-
-        service = TestBed.get(MealService);
-        server = TestBed.get(MockBackend);     
-
-  })
+    mockMealService = new MockMealService(validResponse)
+    component = new ClientMealListComponent(mockMealService);
   }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should handle successful retrieval of data', async( () => {  
+    expect(component.meals).toBeUndefined();
+    component.loadMeals();
+    expect(component.meals).toEqual(validResponse);
+  }));
+
+  it('should handle an error response', async( () => {    
+    mockMealService.getMealList = () => Observable.create(observer => new Error("status: 404"));
+
+    expect(component.meals).toBeUndefined();
+    component.loadMeals();
+    expect(component.meals).toBeUndefined();
+  }));
 
 });
