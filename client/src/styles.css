@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+.mow-form {
+    margin-top: 50px;
+}
+
+.has-error, .has-error-box {
+    color: #D50000;
+}
+
+.has-error-box {
+    border-left: #D50000 solid 2px;
+}

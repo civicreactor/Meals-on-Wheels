@@ -10,6 +10,7 @@ import { AdminCustomerListComponent } from './admin-customer-list/admin-customer
 import { AdminCustomerAddComponent } from './admin-customer-add/admin-customer-add.component';
 
 import { AdminCustomerService } from './admin-customer.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const customerRoutes: Routes = [
     {
@@ -32,7 +33,9 @@ const customerRoutes: Routes = [
     imports: [
         RouterModule.forChild(customerRoutes),
         SharedModule,
-        ToasterModule
+        ToasterModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     exports: [
         RouterModule
