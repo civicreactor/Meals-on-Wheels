@@ -66,16 +66,25 @@ describe('ClientMealListComponent', () => {
 
   it('should disable the form while first name is not entered', () => {
     component.name.setValue(null);
+    component.surname.setValue('b');
+    component.address.setValue('12');
+    component.telephone.setValue('123456');
     expect(component.customerForm.status).toEqual('INVALID');
   });
 
   it('should disable the form while last name is not entered', () => {
     component.surname.setValue(null);
+    component.name.setValue('a');
+    component.address.setValue('12');
+    component.telephone.setValue('123456');
     expect(component.customerForm.status).toEqual('INVALID');
   });
 
   it('should disable the form while address is not entered', () => {
     component.address.setValue(null);
+    component.name.setValue('a');
+    component.surname.setValue('b');
+    component.telephone.setValue('123456');
     expect(component.customerForm.status).toEqual('INVALID');
   });
 
