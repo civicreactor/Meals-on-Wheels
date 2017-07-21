@@ -44,10 +44,10 @@ describe('ClientMealListComponent', () => {
   });
 
   it('should have default empty values', fakeAsync(() => {
-    expect(component.name.value).toBeNull;
-    expect(component.surname.value).toBeNull;
-    expect(component.address.value).toBeNull;
-    expect(component.telephone.value).toBeNull;
+    expect(component.name.value).toBeNull();
+    expect(component.surname.value).toBeNull();
+    expect(component.address.value).toBeNull();
+    expect(component.telephone.value).toBeNull();
   }));
 
   it('should handle successful retrieval of data', () => {  
